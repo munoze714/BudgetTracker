@@ -18,10 +18,27 @@ class Form extends Component {
   handleFormSubmit = (event) => {
     // Preventing the default behavior of the form submit (which is to refresh the page)
     event.preventDefault();
+    console.log("u got clicked!!");
+    console.log(
+      "new transaction to add",
+      parseInt(this.state.currentTransaction)
+    );
+
+    var oldList = this.state.transactionList;
+    var newList = oldList.concat(parseInt(this.state.currentTransaction));
+
+    this.setState({
+      transactionList: newList,
+    });
   };
 
   render() {
-    return <input onChange={this.handleTying}></input>;
+    return (
+      <>
+        <input onChange={this.handleInputChange}></input>
+        <button onClick={this.handleFormSubmit}>Save</button>
+      </>
+    );
   }
 }
 
