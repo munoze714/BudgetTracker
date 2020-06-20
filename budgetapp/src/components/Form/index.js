@@ -42,19 +42,23 @@ class Form extends Component {
     return (
       <>
         <div>
-          <input
-            value={this.state.currentTransaction}
-            name="currentTransaction"
-            onChange={this.handleInputChange}
-            type="text"
-            placeholder="New Transaction"
-          />
-          <button onClick={this.handleFormSubmit}>Save</button>
-          {this.state.transactionList.map((singleTrans) => {
-            return <p>{singleTrans}</p>;
-          })}
+          <form className="form">
+            <input
+              value={this.state.currentTransaction}
+              name="currentTransaction"
+              onChange={this.handleInputChange}
+              type="text"
+              placeholder="New Transaction"
+            />
+            <button onClick={this.handleFormSubmit} className="btn btn-success">
+              Save
+            </button>
+            {this.state.transactionList.map((singleTrans) => {
+              return <p>{singleTrans}</p>;
+            })}
 
-          <span>Total: {total} </span>
+            <span>Total: {total} </span>
+          </form>
         </div>
       </>
     );
