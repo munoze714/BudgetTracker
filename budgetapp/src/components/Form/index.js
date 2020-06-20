@@ -33,10 +33,29 @@ class Form extends Component {
   };
 
   render() {
+    console.log("this is our state", this.state);
+    var total = 0;
+    for (var i = 0; i < this.state.transactionList.length; i++) {
+      total += this.state.transactionList[i];
+    }
+
     return (
       <>
-        <input onChange={this.handleInputChange}></input>
-        <button onClick={this.handleFormSubmit}>Save</button>
+        <div>
+          <input
+            value={this.state.currentTransaction}
+            name="currentTransaction"
+            onChange={this.handleInputChange}
+            type="text"
+            placeholder="New Transaction"
+          />
+          <button onClick={this.handleFormSubmit}>Save</button>
+          {this.state.transactionList.map((singleTrans) => {
+            return <p>{singleTrans}</p>;
+          })}
+
+          <span>Total: {total} </span>
+        </div>
       </>
     );
   }
