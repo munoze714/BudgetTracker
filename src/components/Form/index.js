@@ -5,12 +5,14 @@ class Form extends Component {
   // Setting the component's initial state
   state = {
     transactionList: [],
+    transactionDescription: "",
     currentTransaction: 0,
   };
 
   handleInputChange = (event) => {
     // Getting the value and name of the input which triggered the change
     this.setState({
+      transactionDescription: event.target.value,
       currentTransaction: event.target.value,
     });
   };
@@ -44,18 +46,27 @@ class Form extends Component {
         <div>
           <form className="form">
             <input
-              value={this.state.currentTransaction}
+              name="transactionDescription"
+              onChange={this.handleInputChange}
+              type="text"
+              placeholder="Description"
+            />
+            <input
+              // value={this.state.currentTransaction}
               name="currentTransaction"
               onChange={this.handleInputChange}
               type="text"
-              placeholder="New Transaction"
+              placeholder="$0.00"
             />
             <button onClick={this.handleFormSubmit} className="btn btn-success">
               Save
             </button>
-            {this.state.transactionList.map((singleTrans) => {
-              return <p>{singleTrans}</p>;
-            })}
+            <listdata>
+              <h4>History</h4>
+              {this.state.transactionList.map((singleTrans) => {
+                return <p>$ {singleTrans}</p>;
+              })}
+            </listdata>
 
             <span>Total: {total} </span>
           </form>
